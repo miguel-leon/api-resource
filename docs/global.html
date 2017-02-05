@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Global</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Global</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="apiResource"><span class="type-signature"></span>apiResource<span class="signature">(route, actions, resourceConfig)</span><span class="type-signature"> &rarr; {Resource.constructor}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>route</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>url A parameterized URL template with parameters prefixed by <code>:</code>
+    as in <code>/user/:username</code>. Appended to <code>baseUrl</code></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;<a href="global.html#Action">Action</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>map of available actions for the resource with its definition.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceConfig</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>http default config for the resource. see $http documentation.
+    Additionally it can contain an attribute <code>{number} interceptorLimit</code> which delimits the number of
+     interceptors applied from the interceptors array.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="api-resource.js.html">api-resource.js</a>, <a href="api-resource.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The class Resource generated will have a class method for each action defined.
+    These methods will send the first argument as request body if needed.
+    This methods return an instance of the class, or an array of instances if <code>isArray</code> is true for the action.
+    The instances of this class will have a method <code>$_action_</code> for each non <code>isArray</code> action. These methods
+     will return the promise of the request directly instead of the resource.
+    The class methods for non <code>isArray</code> actions will have a sub-method <code>each</code> that can be call with an array
+     to make a call to the action with each element of the array and return an array of instances.
+    The resource instance may encapsulate primitive data or even arrays if <code>isArray</code> is not true.
+    The promise of the request will have the same result as argument unless <code>ignoreResponse</code> is defined
+     for the action.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Resource.constructor</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var MyResource = apiResource('api/my/route', {get: myActionDefinition});</code></pre>
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+<h4 class="name" id="Action">Action</h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>method</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the http method. If missing, it falls to the defined for this action in
+     actionsDefaults, or it falls again to be the same as the action name.
+    Useful for when the action is called get or delete.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subRoute</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>final part of the url needed for intricate url schemes with
+     multiple routes for the same resource.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isArray</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>set true if the expected return data for the action is an array.
+    This array will also contain the property <code>$promise</code>.
+    Each item in the array will be a resource instance.
+    The action will throw an error if the data to be send or the data received is not an array.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ignoreResponse</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>set true if the response data is to be ignore in requests
+     with body. The argument for the promise will be the raw data.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>map with values to be captured for the url params
+     from the action arguments. Each value can be a function, the value itself if constant, or a string mapper.
+   The possible values for the string are:</p>
+<ul>
+<li><code>'='</code>: the value is mapped to the same key of an object in the data of the action.</li>
+<li><code>'@_number_'</code>: the value is mapped to the argument number specified.</li>
+<li><code>'@_key_[._key_[...]]'</code>: the value is mapped to the dotted path specified of an object in the first argument of the action.</li>
+</ul>
+<p>The property params itself can be a string that gets mapped in the same way as above.
+    e.g. <code>{myId: '='}</code> o <code>{myId: '@myId'}</code> -&gt; <code>myId = arguments[0].myId</code></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>queryParams</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>map with values to be captured for the request query params
+     from the action arguments.
+    The property is mapped in the same manner as <code>params</code>.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hasData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>set to true when the action doesn't have a body, but the resource
+     needs to be initialized with the first argument as though it were the body of the request.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>postProcess</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>single interceptor like function that post process the resource as
+     the last part of the promise chain, before extending the object with the retrieved data.
+    The function must return the post processed resource.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>skipOnMissingParams</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>skip http call is there are missing parameters.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="api-resource.js.html">api-resource.js</a>, <a href="api-resource.js.html#line61">line 61</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="HttpInterceptor">HttpInterceptor</h4>
+
+
+<p class="summary"><p>see $http documentation</p>.</p>
+
+
+
+<div class="description">
+    <p>see $http documentation</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="api-resource.js.html">api-resource.js</a>, <a href="api-resource.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://docs.angularjs.org/api/ng/service/$http">https://docs.angularjs.org/api/ng/service/$http</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-api-resource.html">api-resource</a></li></ul><h3>Classes</h3><ul><li><a href="AbstractResource.html">AbstractResource</a></li><li><a href="Resource.html">Resource</a></li></ul><h3>Namespaces</h3><ul><li><a href="apiResource.html">apiResource</a></li><li><a href="apiResourceProvider.html">apiResourceProvider</a></li></ul><h3>Global</h3><ul><li><a href="global.html#apiResource">apiResource</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Feb 05 2017 16:50:09 GMT-0300 (CLST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
