@@ -1,6 +1,6 @@
 # api-resource
 
-#### REST resources access library
+#### AngularJS REST resources access library
 
 Documentation:
 
